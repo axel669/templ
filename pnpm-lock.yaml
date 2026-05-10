@@ -1,0 +1,100 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@axel669/http':
+        specifier: ^0.4.1
+        version: 0.4.1
+      '@axel669/result':
+        specifier: ^0.1.1
+        version: 0.1.1
+      fflate:
+        specifier: ^0.8.2
+        version: 0.8.2
+      fs-jetpack:
+        specifier: ^5.1.0
+        version: 5.1.0
+      js-yaml:
+        specifier: ^4.1.1
+        version: 4.1.1
+      picomatch:
+        specifier: ^4.0.4
+        version: 4.0.4
+
+packages:
+
+  '@axel669/http@0.4.1':
+    resolution: {integrity: sha512-uD3mMNaxtDCuQgJugLdZPrA6LTd8BV8C5SeH5oJGlTLBIB+TF/tgYLLAH1AKpMqRi7Z617alYGMt3quWc7uJeg==}
+
+  '@axel669/result@0.1.1':
+    resolution: {integrity: sha512-nLZ6K5DTwyOIQx3i5a7FRaXdbQc5lmEQXkq1GpyAvblfb+Xm5/PCbXJrVNW17fZds/2G/pXCNi9c7YZXLlFjBA==}
+
+  '@axel669/result@0.2.1':
+    resolution: {integrity: sha512-M5ujNYsQaIv0I0uQrZTxSrFnaz9tt6IwoGRvwLE5c2MWPFvz7nlI9qzjChb1mGl5M7sL+pmshexDkjJoRsI9Hg==}
+
+  argparse@2.0.1:
+    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+
+  balanced-match@1.0.2:
+    resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
+
+  brace-expansion@2.1.0:
+    resolution: {integrity: sha512-TN1kCZAgdgweJhWWpgKYrQaMNHcDULHkWwQIspdtjV4Y5aurRdZpjAqn6yX3FPqTA9ngHCc4hJxMAMgGfve85w==}
+
+  fflate@0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
+
+  fs-jetpack@5.1.0:
+    resolution: {integrity: sha512-Xn4fDhLydXkuzepZVsr02jakLlmoARPy+YWIclo4kh0GyNGUHnTqeH/w/qIsVn50dFxtp8otPL2t/HcPJBbxUA==}
+
+  js-yaml@4.1.1:
+    resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
+    hasBin: true
+
+  minimatch@5.1.9:
+    resolution: {integrity: sha512-7o1wEA2RyMP7Iu7GNba9vc0RWWGACJOCZBJX2GJWip0ikV+wcOsgVuY9uE8CPiyQhkGFSlhuSkZPavN7u1c2Fw==}
+    engines: {node: '>=10'}
+
+  picomatch@4.0.4:
+    resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
+    engines: {node: '>=12'}
+
+snapshots:
+
+  '@axel669/http@0.4.1':
+    dependencies:
+      '@axel669/result': 0.2.1
+
+  '@axel669/result@0.1.1': {}
+
+  '@axel669/result@0.2.1': {}
+
+  argparse@2.0.1: {}
+
+  balanced-match@1.0.2: {}
+
+  brace-expansion@2.1.0:
+    dependencies:
+      balanced-match: 1.0.2
+
+  fflate@0.8.2: {}
+
+  fs-jetpack@5.1.0:
+    dependencies:
+      minimatch: 5.1.9
+
+  js-yaml@4.1.1:
+    dependencies:
+      argparse: 2.0.1
+
+  minimatch@5.1.9:
+    dependencies:
+      brace-expansion: 2.1.0
+
+  picomatch@4.0.4: {}
