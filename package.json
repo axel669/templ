@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "templ.init": "./cli.js"
+    "templ.setup": "./src/cli.js",
+    "templ.init": "./src/init.js"
   },
   "keywords": [],
   "author": "",
@@ -15,11 +16,11 @@
   "packageManager": "pnpm@10.9.0",
   "type": "module",
   "dependencies": {
-    "@axel669/http": "^0.4.1",
-    "@axel669/result": "^0.1.1",
-    "fflate": "^0.8.2",
-    "fs-jetpack": "^5.1.0",
-    "js-yaml": "^4.1.1",
-    "picomatch": "^4.0.4"
+    "@axel669/http": "0.4.1",
+    "@axel669/result": "0.1.1",
+    "fflate": "0.8.2",
+    "fs-jetpack": "5.1.0",
+    "js-yaml": "4.1.1",
+    "picomatch": "4.0.4"
   }
 }

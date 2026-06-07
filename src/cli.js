@@ -9,10 +9,10 @@ import { Ok, Err } from "@axel669/result"
 import { createInterface } from "node:readline/promises"
 import http from "@axel669/http"
 
-import config from "./src/config.js"
-import templates from "./src/templates.js"
-import { parseYaml, readyaml } from "./src/returnable.js"
-import exitCode from "./src/exit-code.js"
+import config from "./config.js"
+import templates from "./templates.js"
+import { parseYaml, readyaml } from "./returnable.js"
+import exitCode from "./exit.js"
 
 const cli = createInterface({
     input: process.stdin,
@@ -32,12 +32,12 @@ if (download.ok === false) {
     process.exit(exitCode.failedDownload)
 }
 const buf = Buffer.from(download.value)
-// const res = await fetch(`https://github.com/${config.repo}/archive/refs/tags/${config.tag}.zip`)
-// const buf = Buffer.from(
-//     await res.arrayBuffer()
-// )
 
-const folderRegex = new RegExp(`^[^\\/]+\\/${config.project}\\/`)
+// remove trailing slash on folder name if its given
+const normalizedFolder = config.folder.replace(/\/$/, "")
+// folder regex skips all the of the generated folder name github shoves into
+// the download of the zip
+const folderRegex = new RegExp(`^[^\\/]+\\/${normalizedFolder}\\/`)
 const filter = (file) => {
     if (file.name.endsWith("/") === true) {
         return false
@@ -48,7 +48,6 @@ const filter = (file) => {
     return true
 }
 const sourceFiles = await thenable(ff.unzip, buf, { filter })
-// console.log(sourceFiles)
 const files = Object.fromEntries(
     Object.entries(sourceFiles).map(
         (pair) => [
@@ -75,16 +74,10 @@ if (manifest.ok === false) {
 }
 const exclude = pico(manifest.value.varExclude)
 const variables = readyaml(".templ-vars.yml")
-const checkvars = () => {
-    if (variables.ok === false) {
-        console.log("Variables not loaded")
-        process.exit(100)
-    }
-}
 
 const fileCount = Object.keys(files).length
 const response = await cli.question(
-    `Extract ${fileCount} files into ${config.dir}? type y to cotinue> `
+    `Extract ${fileCount} files into ${config.dest}? type y to cotinue> `
 )
 if (response !== "y") {
     console.log("Extraction cancelled")
@@ -92,7 +85,7 @@ if (response !== "y") {
 }
 cli.close()
 
-const target = fs.cwd(config.dir)
+const target = fs.cwd(config.dest)
 const writeFile = (name, bytes) => {
     if (exclude(name) === true) {
         target.write(name, bytes)
@@ -101,9 +94,11 @@ const writeFile = (name, bytes) => {
     const content = bytes.toString("utf8")
     const modified = content.replace(
         /\{\{var:([^\}]+)\}\}/g,
-        (_, name) => {
-            checkvars()
-            return variables.value[name]
+        (match, name) => {
+            if (variables.ok === false) {
+                exit.noVars("Unable to load .templ-vars.yml")
+            }
+            return variables.value[name] ?? match
         }
     )
     target.write(name, modified)

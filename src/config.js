@@ -1,5 +1,5 @@
 import args from "./args.js"
-import exitCode from "./exit-code.js"
+import exit from "./exit.js"
 import templates from "./templates.js"
 
 const config = {
@@ -8,16 +8,13 @@ const config = {
 }
 
 if (config.repo === undefined) {
-    console.log("Missing repo")
-    process.exit(exitCode.missingRepo)
+    exit.missingRepo("Missing repo")
 }
 if (config.tag === undefined) {
-    console.log("Missing tag")
-    process.exit(exitCode.missingTag)
+    exit.missingTag("Missing tag")
 }
-if (config.project === undefined) {
-    console.log("Missing project")
-    process.exit(exitCode.missingProject)
+if (config.folder === undefined) {
+    exit.missingfolder("Missing folder")
 }
 
 export default config

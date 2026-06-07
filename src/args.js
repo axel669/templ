@@ -10,11 +10,11 @@ const args = parseArgs({
             type: "string",
             short: "t",
         },
-        project: {
+        folder: {
             type: "string",
-            short: "p",
+            short: "f",
         },
-        dir: {
+        dest: {
             type: "string",
             short: "d",
             default: "."
