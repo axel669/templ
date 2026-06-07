@@ -12,7 +12,7 @@ import http from "@axel669/http"
 import config from "./config.js"
 import templates from "./templates.js"
 import { parseYaml, readyaml } from "./returnable.js"
-import exitCode from "./exit.js"
+import exit from "./exit.js"
 
 const cli = createInterface({
     input: process.stdin,
@@ -29,7 +29,7 @@ const download = await http.get({
 })
 if (download.ok === false) {
     console.error(download.error)
-    process.exit(exitCode.failedDownload)
+    exit.failedDownload(download.error)
 }
 const buf = Buffer.from(download.value)
 
@@ -69,8 +69,7 @@ const loadManifest = (source) => {
 }
 const manifest = loadManifest(files["manifest.yml"])
 if (manifest.ok === false) {
-    console.log("Invalid manifest")
-    process.exit(exitCode.invalidManifest)
+    exit.invalidManifest("Invalid manifest")
 }
 const exclude = pico(manifest.value.varExclude)
 const variables = readyaml(".templ-vars.yml")

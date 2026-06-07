@@ -23,7 +23,7 @@ if (fs.exists(templatePath) !== false) {
 const exampleFile = `
 # command: templ.setup zephyr
 # template name
-# zephyr:
+# example:
 #   # git repo
 #   repo: axel669/templ
 #   # tag required for download targetting
