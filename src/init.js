@@ -27,7 +27,7 @@ const exampleFile = `
 #   # git repo
 #   repo: axel669/templ
 #   # tag required for download targetting
-#   tag: v0.0.1
+#   tag: latest
 #   # the folder inside the repo to extract
 #   folder: example/template
 `
