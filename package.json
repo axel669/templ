@@ -22,5 +22,8 @@
     "fs-jetpack": "5.1.0",
     "js-yaml": "4.1.1",
     "picomatch": "4.0.4"
-  }
+  },
+  "files": [
+    "src/"
+  ]
 }
