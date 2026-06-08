@@ -1,7 +1,7 @@
 import os from "node:os"
 import path from "node:path"
 
-import exitCode from "./exit.js"
+import exit from "./exit.js"
 import { readyaml } from "./returnable.js"
 
 const template = readyaml(
