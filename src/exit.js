@@ -8,6 +8,7 @@ const codes = [
     "invalidManifest",
     "failedDownload",
     "templateExists",
+    "noVars",
 ]
 
 export default codes.reduce(

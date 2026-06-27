@@ -9,31 +9,28 @@ importers:
   .:
     dependencies:
       '@axel669/http':
-        specifier: ^0.4.1
+        specifier: 0.4.1
         version: 0.4.1
       '@axel669/result':
-        specifier: ^0.1.1
-        version: 0.1.1
+        specifier: 0.2.1
+        version: 0.2.1
       fflate:
-        specifier: ^0.8.2
+        specifier: 0.8.2
         version: 0.8.2
       fs-jetpack:
-        specifier: ^5.1.0
+        specifier: 5.1.0
         version: 5.1.0
       js-yaml:
-        specifier: ^4.1.1
-        version: 4.1.1
+        specifier: 4.3.0
+        version: 4.3.0
       picomatch:
-        specifier: ^4.0.4
+        specifier: 4.0.4
         version: 4.0.4
 
 packages:
 
   '@axel669/http@0.4.1':
     resolution: {integrity: sha512-uD3mMNaxtDCuQgJugLdZPrA6LTd8BV8C5SeH5oJGlTLBIB+TF/tgYLLAH1AKpMqRi7Z617alYGMt3quWc7uJeg==}
-
-  '@axel669/result@0.1.1':
-    resolution: {integrity: sha512-nLZ6K5DTwyOIQx3i5a7FRaXdbQc5lmEQXkq1GpyAvblfb+Xm5/PCbXJrVNW17fZds/2G/pXCNi9c7YZXLlFjBA==}
 
   '@axel669/result@0.2.1':
     resolution: {integrity: sha512-M5ujNYsQaIv0I0uQrZTxSrFnaz9tt6IwoGRvwLE5c2MWPFvz7nlI9qzjChb1mGl5M7sL+pmshexDkjJoRsI9Hg==}
@@ -53,8 +50,8 @@ packages:
   fs-jetpack@5.1.0:
     resolution: {integrity: sha512-Xn4fDhLydXkuzepZVsr02jakLlmoARPy+YWIclo4kh0GyNGUHnTqeH/w/qIsVn50dFxtp8otPL2t/HcPJBbxUA==}
 
-  js-yaml@4.1.1:
-    resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
+  js-yaml@4.3.0:
+    resolution: {integrity: sha512-1td788aAnnZ5qs7V2QIRl1owjtYpbKt749Y3xauqQgwIIGF/xXWz1wMTEBx5O3LK3lXLVuqXPdPxj2BoFHaW9Q==}
     hasBin: true
 
   minimatch@5.1.9:
@@ -70,8 +67,6 @@ snapshots:
   '@axel669/http@0.4.1':
     dependencies:
       '@axel669/result': 0.2.1
-
-  '@axel669/result@0.1.1': {}
 
   '@axel669/result@0.2.1': {}
 
@@ -89,7 +84,7 @@ snapshots:
     dependencies:
       minimatch: 5.1.9
 
-  js-yaml@4.1.1:
+  js-yaml@4.3.0:
     dependencies:
       argparse: 2.0.1
 

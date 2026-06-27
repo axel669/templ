@@ -44,8 +44,20 @@ To set values for the variables when using the setup command, make a file called
 should have key value pairs for any variables that you want to substitute. Any
 variables that do not have a value will be left alone.
 
+> The variable file is optional. The automatic variables in the next section
+> are available even if the file is not specified. The file is only required if
+> you want to add your own variables+values.
+
 ```yml
 # .templ-vars.yml
 var1: some value
 var2: another value
 ```
+
+### Automatic Variables
+templ will give a couple of variables for free without requiring the template
+variable file (and the file can override these).
+- `cwd` _Full path of the directory the command is run in_
+- `dirname` _basename() of the cwd_
+- `timestamp` _Unix millisecond timestamp for when the command is run_
+- `isodate` _ISO Date string for the timestamp, in local timezone (ex 2026-06-25)_

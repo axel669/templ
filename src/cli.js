@@ -72,7 +72,29 @@ if (manifest.ok === false) {
     exit.invalidManifest("Invalid manifest")
 }
 const exclude = pico(manifest.value.varExclude)
-const variables = readyaml(".templ-vars.yml")
+const now = new Date()
+const baseVars = {
+    cwd: process.cwd(),
+    dirname: path.basename(
+        process.cwd()
+    ),
+    timestamp: now.getTime(),
+    isodate: [
+        now.getFullYear(),
+        (now.getMonth() + 1).toString().padStart(2, "0"),
+        now.getDate().toString().padStart(2, "0"),
+    ].join("-")
+}
+const userVars = readyaml(".templ-vars.yml")
+// not having a vars file is fine, but if the load fails for any other reason
+// we dont want to continue
+if (userVars.ok === false && userVars.meta.code !== "nofile") {
+    exit.noVars("Error loading .templ-vars.yml")
+}
+const variables = {
+    ...baseVars,
+    ...(userVars.value ?? {})
+}
 
 const fileCount = Object.keys(files).length
 const response = await cli.question(
@@ -93,12 +115,7 @@ const writeFile = (name, bytes) => {
     const content = bytes.toString("utf8")
     const modified = content.replace(
         /\{\{var:([^\}]+)\}\}/g,
-        (match, name) => {
-            if (variables.ok === false) {
-                exit.noVars("Unable to load .templ-vars.yml")
-            }
-            return variables.value[name] ?? match
-        }
+        (match, name) => variables[name] ?? match
     )
     target.write(name, modified)
 }
